@@ -11,9 +11,8 @@ headless = True
 
 
 def run(context: BrowserContext):
-    url = "https://bot.sannysoft.com/"
     page = context.new_page()
-    page.goto(url)
+    page.goto("https://bot.sannysoft.com/")
 
     _suffix = "-headless" if headless else "-headful"
     page.screenshot(path=f"result/sannysoft{_suffix}.png", full_page=True)
@@ -25,9 +24,7 @@ def bytedance():
         context = browser.new_context()
         stealth_sync(context)
         run(context)
-        context.close()
-        browser.close()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     bytedance()

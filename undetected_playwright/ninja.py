@@ -138,7 +138,7 @@ async def stealth_async(context: ASyncContext, config: typing.Optional[StealthCo
 
 
 def fire(
-        container: typing.Callable[[SyncContext], None], path_state: str, user_data_dir: str, **kwargs
+    container: typing.Callable[[SyncContext], None], path_state: str, user_data_dir: str, **kwargs
 ):
     """
     Lighter with synchronous callback
@@ -158,10 +158,10 @@ def fire(
 
 
 async def fire_async(
-        container: typing.Callable[[ASyncContext], typing.Any],
-        path_state: str,
-        user_data_dir: str,
-        **kwargs,
+    container: typing.Callable[[ASyncContext], typing.Any],
+    path_state: str,
+    user_data_dir: str,
+    **kwargs,
 ):
     async with async_playwright() as p:
         context = await p.chromium.launch_persistent_context(user_data_dir=user_data_dir, **kwargs)
