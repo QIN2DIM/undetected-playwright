@@ -12,6 +12,7 @@ setup(
     packages=find_packages(
         include=["undetected_playwright", "'undetected_playwright'.*", "LICENSE"]
     ),
+    package_data={"undetected_playwright": ["js/*.js"]},
     url="https://github.com/QIN2DIM/undetected-playwright",
     license="Apache-2.0 license",
     author="QIN2DIM",

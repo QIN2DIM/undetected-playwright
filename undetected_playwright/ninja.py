@@ -9,9 +9,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from playwright.async_api import BrowserContext as ASyncContext
-from playwright.async_api import async_playwright
 from playwright.sync_api import BrowserContext as SyncContext
-from playwright.sync_api import sync_playwright
 
 
 def _from_file(name):
@@ -135,37 +133,3 @@ def stealth_sync(context: SyncContext, config: typing.Optional[StealthConfig] = 
 async def stealth_async(context: ASyncContext, config: typing.Optional[StealthConfig] = None):
     for feature in (config or StealthConfig()).enabled_features:
         await context.add_init_script(feature)
-
-
-def fire(
-    container: typing.Callable[[SyncContext], None], path_state: str, user_data_dir: str, **kwargs
-):
-    """
-    Lighter with synchronous callback
-
-    :param container: Callable function
-    :param path_state: Path to save cookies. Such as "xx/state.json"
-    :param user_data_dir: Path to save userData.
-    :param kwargs: Args to launch_persistent_context
-    :return:
-    """
-    with sync_playwright() as p:
-        context = p.chromium.launch_persistent_context(user_data_dir=user_data_dir, **kwargs)
-        stealth_sync(context)
-        container(context)
-        context.storage_state(path=path_state)
-        context.close()
-
-
-async def fire_async(
-    container: typing.Callable[[ASyncContext], typing.Any],
-    path_state: str,
-    user_data_dir: str,
-    **kwargs,
-):
-    async with async_playwright() as p:
-        context = await p.chromium.launch_persistent_context(user_data_dir=user_data_dir, **kwargs)
-        await stealth_async(context)
-        await container(context)
-        await context.storage_state(path=path_state)
-        await context.close()
