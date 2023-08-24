@@ -1,0 +1,38 @@
+# https://python-poetry.org/docs/libraries/#versioning
+
+[tool.poetry]
+name = "undetected-playwright"
+version = "0.2.0"
+description = "You know who I am"
+license = "Apache-2.0"
+authors = ["QIN2DIM <yaoqinse@gmail.com>"]
+readme = "README.md"
+homepage = "https://github.com/QIN2DIM/undetected-playwright"
+repository = "https://github.com/QIN2DIM/undetected-playwright"
+documentation = "https://github.com/QIN2DIM/undetected-playwright"
+keywords = ["undetected", "playwright", "steath"]
+packages = [{ include = "undetected_playwright", format = "sdist" }]
+classifiers = [
+    "Topic :: Scientific/Engineering",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Scientific/Engineering :: Image Processing",
+    "Topic :: Scientific/Engineering :: Image Recognition",
+    "Topic :: Software Development",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Programming Language :: Python :: 3",
+]
+
+# https://python-poetry.org/docs/configuration/#virtualenvsin-project
+[virtualenvs]
+# Create a `.venv` virtual environment in the project root
+in-project = true
+
+# https://python-poetry.org/docs/pyproject/#dependencies-and-dependency-groups
+[tool.poetry.dependencies]
+python = "^3.8"
+playwright = "*"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
