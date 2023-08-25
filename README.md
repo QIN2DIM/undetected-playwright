@@ -7,10 +7,14 @@
    ```bash
    pip install -U undetected-playwright
    ```
+2. **Donload dependencies**
+
+   ```bash
+   playwright install
+   playwright install-deps
+   ```
 
 2. **Run the demo**
-
-   As before.
 
    ```python
    from playwright.sync_api import BrowserContext, sync_playwright
