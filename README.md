@@ -80,11 +80,11 @@ from playwright.sync_api import sync_playwright, Page
 + from undetected_playwright import Malenia
  
 async def main():
-	async with async_playwright() as p:
-		browser = await p.chromium.launch()
-		context = await browser.new_context()
-+		await Malenia.apply_stealth(context)
-		page = await context.new_page()
+    async with async_playwright() as p:
+        browser = await p.chromium.launch()
+        context = await browser.new_context()
++       await Malenia.apply_stealth(context)
+        page = await context.new_page()
 ```
 
 ## Demo: SyncPlaywright Sannysoft
