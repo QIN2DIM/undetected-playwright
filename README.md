@@ -58,6 +58,35 @@
    
    ```
 
+## How to
+
+### Sync
+
+```diff
+from playwright.sync_api import sync_playwright, Page
++ from undetected_playwright import Tarnished
+
+with sync_playwright() as p:
+    browser = p.chromium.launch()
+    context = browser.new_context()
++   Tarnished.apply_stealth(context)
+    page = context.new_page()
+```
+
+### Async
+
+```diff
+from playwright.sync_api import sync_playwright, Page
++ from undetected_playwright import Malenia
+ 
+async def main():
+	async with async_playwright() as p:
+		browser = await p.chromium.launch()
+		context = await browser.new_context()
++		await Malenia.apply_stealth(context)
+		page = await context.new_page()
+```
+
 ## Demo: SyncPlaywright Sannysoft
 
 ```python
@@ -133,8 +162,6 @@ if __name__ == "__main__":
     main()
 
 ```
-
-
 
 ## Demo: AsyncPlaywright CloudFlare
 
@@ -215,10 +242,6 @@ if __name__ == "__main__":
     asyncio.run(main())
 
 ```
-
-
-
-
 
 ## Reference
 
